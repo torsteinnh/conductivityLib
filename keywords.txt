@@ -12,9 +12,9 @@ conductivitySensor	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-changeDelay	KEYWORD2
-getDelay	KEYWORD2
 getValue	KEYWORD2
+measure		KEYWORD2
+sleep		KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

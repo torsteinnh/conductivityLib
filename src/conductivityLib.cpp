@@ -7,7 +7,7 @@ Implementation of library for conductivitySensor
 
 #pragma once
 
-conductivitySensor::conductivitySensor(int digital1, int digital2, int analog1, int pauseMs = 5, int cycles = 4){
+conductivitySensor::conductivitySensor(int digital1, int digital2, int analog1, int pauseMs = 1, int cycles = 4){
   this->_dp1 = digital1;
   this->_dp2 = digital2;
   this->_ap = analog1;
@@ -22,17 +22,28 @@ conductivitySensor::conductivitySensor(int digital1, int digital2, int analog1, 
 
 int conductivitySensor::getValue(){ return reading; }
 
+
 void conductivitySensor::measure(){
+  this->reading = 0;
+  
   for(int i = 0; i < this->cycles; i++){
-    pinMode(this->_dp1, HIGH);
-    pinMode(this->_dp2, LOW);
+    digitalWrite(this->_dp1, HIGH);
+    digitalWrite(this->_dp2, LOW);
     delay(this->pause);
 
     this->reading += analogRead(_ap);
 
-    pinMode(this->_dp1, LOW);
-    pinMode(this->_dp2, HIGH);
+    digitalWrite(this->_dp1, LOW);
+    digitalWrite(this->_dp2, HIGH);
     delay(this->pause);
+
+    this->reading += 1023 - analogRead(_ap);
   }
-  this->reading = this->reading / this->cycles;
+  this->reading = this->reading / (2*this->cycles);
+}
+
+
+void conductivitySensor::sleep(){
+  digitalWrite(this->_dp1, LOW);
+  digitalWrtie(this->_dp2, LOW);
 }
