@@ -38,7 +38,7 @@ private:
   int _dp1;
   int _dp2;
   int _ap;
-  int delay;
+  int pause;
   int cycles;
   int reading;
 };
