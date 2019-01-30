@@ -30,8 +30,4 @@ void noCurrent();
 Stops all current through the sensor.
 
 
-### Expected hardware
-
-Schematics of sugested usage:
-
-![image](extras/circuit.pdf)
+### ![Schematics of sugested usage:](extras/circuit.pdf)
