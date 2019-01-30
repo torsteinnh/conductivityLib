@@ -14,7 +14,7 @@ conductivitySensor	KEYWORD1
 
 getValue	KEYWORD2
 measure		KEYWORD2
-sleep		KEYWORD2
+noCurrent	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

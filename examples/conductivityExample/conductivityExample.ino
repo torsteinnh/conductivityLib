@@ -19,7 +19,7 @@ void loop() {
   Serial.print("The value meausred was: ");
   Serial.println(myreading);
 
-  myreading.sleep();
+  myreading.noCurrent();
 
   delay(1000);
 }

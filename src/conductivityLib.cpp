@@ -40,10 +40,11 @@ void conductivitySensor::measure(){
     this->reading += 1023 - analogRead(_ap);
   }
   this->reading = this->reading / (2*this->cycles);
+  noCurrent();
 }
 
 
-void conductivitySensor::sleep(){
+void conductivitySensor::noCurrent(){
   digitalWrite(this->_dp1, LOW);
   digitalWrtie(this->_dp2, LOW);
 }

@@ -34,7 +34,7 @@ public:
   conductivitySensor(int digital1, int digital2, int analog1, int delayMs = 1, int cycles = 4);
   int getValue();
   void measure();
-  void sleep();
+  void noCurrent();
 private:
   int _dp1;
   int _dp2;
