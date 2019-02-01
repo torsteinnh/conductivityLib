@@ -7,12 +7,15 @@ Implementation of library for conductivitySensor
 
 #pragma once
 
-conductivitySensor::conductivitySensor(int digital1, int digital2, int analog1, int pauseMs = 1, int cycles = 4){
+conductivitySensor::conductivitySensor(int digital1, int digital2, int analog1,int R, int pauseMs = 1, int cycles = 4, double Vcc = 5, int sMax = 1024){
   this->_dp1 = digital1;
   this->_dp2 = digital2;
   this->_ap = analog1;
   this->pause = pauseMs;
   this->cycles = cycles;
+  this->resistor = R;
+  this->Vcc = Vcc;
+  this->sMax = sMax;
 
   pinMode(digital1, OUTPUT);
   pinMode(digital2, OUTPUT);
@@ -37,14 +40,23 @@ void conductivitySensor::measure(){
     digitalWrite(this->_dp2, HIGH);
     delay(this->pause);
 
-    this->reading += 1023 - analogRead(_ap);
+    analogRead(_ap);
   }
-  this->reading = this->reading / (2*this->cycles);
+  this->reading = this->reading / this->cycles;
   noCurrent();
 }
 
 
 void conductivitySensor::noCurrent(){
   digitalWrite(this->_dp1, LOW);
-  digitalWrtie(this->_dp2, LOW);
+  digitalWrite(this->_dp2, LOW);
+}
+
+
+int conductivitySensor::resistance(){
+  double vr = Vcc * reading / (double)sMax;
+  double strom = vr / (double)resistor;
+  double vs = Vcc - vr;
+  double Rs = vs / strom;
+  return (int)Rs;
 }

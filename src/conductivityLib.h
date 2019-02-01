@@ -31,10 +31,11 @@ between, for instance 1 cm of whet soil or some riverwater.
 
 class conductivitySensor{
 public:
-  conductivitySensor(int digital1, int digital2, int analog1, int delayMs = 1, int cycles = 4);
+  conductivitySensor(int digital1, int digital2, int analog1, int R, int pauseMs = 1, int cycles = 4, double Vcc = 5, int sMax = 1024);
   int getValue();
   void measure();
   void noCurrent();
+  int resistance();
 private:
   int _dp1;
   int _dp2;
@@ -42,4 +43,7 @@ private:
   int pause;
   int cycles;
   int reading;
+  int resistor;
+  double Vcc;
+  int sMax;
 };
