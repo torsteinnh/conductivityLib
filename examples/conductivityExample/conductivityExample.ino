@@ -2,6 +2,7 @@
 
 conductivitySensor mysensor(3, 4, 1);
 int myreading;
+int resistance;
 
 void setup() {
   // Set upp serial for debugging
@@ -15,9 +16,12 @@ void loop() {
 
   mysensor.measure();
   myreading = mysensor.getValue();
+  resistance = mysensor.resistance();
 
   Serial.print("The value meausred was: ");
-  Serial.println(myreading);
+  Serial.print(myreading);
+  Serial.print("\tThe resistance in the sensor was: ");
+  Serial.println(resistance);
 
   myreading.noCurrent();
 

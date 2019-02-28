@@ -29,5 +29,8 @@ Runs a measurement on the sensor, this measures the value returned by getValue.
 void noCurrent();
 Stops all current through the sensor.
 
+int resistance();
+Returns the resistance between the electrodes in the sensors.
+
 
 ### ![Schematics of sugested usage:](extras/circuit.pdf)

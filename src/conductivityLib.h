@@ -7,6 +7,7 @@ where the reaction is reversible and non-nangerous.
 
 
 The intended workflow is with a diagram as follows:
+(a pdf of the same figure is available in the extras folder)
     -------------+
 		 |
 	       D1+------+
